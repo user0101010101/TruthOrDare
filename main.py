@@ -6,11 +6,7 @@ app = FastAPI()
 from db.mongo import OneQuestion
 import  socket
 
-# sock = socket.socket()
-# sock.bind(('', 8000))
-# sock.listen(1)
-# conn, addr = sock.accept()
-# print(addr)
+
 @app.get("/")
 async def home():
     return {"Hello user"}
