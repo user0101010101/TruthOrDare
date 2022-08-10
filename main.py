@@ -4,7 +4,13 @@ from typing import List
 from schemas import Book, Autor, BookOut, RandQuestionOut
 app = FastAPI()
 from db.mongo import OneQuestion
+import  socket
 
+# sock = socket.socket()
+# sock.bind(('', 8000))
+# sock.listen(1)
+# conn, addr = sock.accept()
+# print(addr)
 @app.get("/")
 async def home():
     return {"Hello user"}
@@ -22,6 +28,15 @@ async def home():
 @app.get('/get_new_question', response_model=RandQuestionOut)
 async def get_new_question():
     return await OneQuestion()
+
+if __name__ == '__main__':
+    uvicorn.run(
+        "main:app",
+        host='192.168.50.191',
+        port=8000,
+        reload=True
+    )
+
 
 # @app.post("/book", response_model=BookOut)
 # def create_book(item: Book):
