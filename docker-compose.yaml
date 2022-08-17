@@ -1,0 +1,27 @@
+version: '3.5'
+
+services:
+
+  db_data:
+    container_name: db_data
+    ports:
+      - '27117:27017'
+    image: mongo:5.0
+    restart: always
+    volumes:
+      - mongodb:/data/db
+  app:
+    build: .
+    container_name: fastapi_app
+    ports:
+      - '8000:8000'
+    command: bash -c "uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+    depends_on:
+      - db_data
+    restart: always
+
+
+
+
+volumes:
+  mongodb:

@@ -25,13 +25,13 @@ async def home():
 async def get_new_question():
     return await OneQuestion()
 
-if __name__ == '__main__':
-    uvicorn.run(
-        "main:app",
-        host='192.168.50.191',
-        port=8000,
-        reload=True
-    )
+# if __name__ == '__main__':
+#     uvicorn.run(
+#         "main:app",
+#         host='localhost',
+#         port=8000,
+#         reload=True
+#     )
 
 
 # @app.post("/book", response_model=BookOut)
